@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --mat: #1f4e45;
+  --mat-grid: #5e9384;
+  --paper: #fbfbf8;
+  --graphite: #22262a;
+  --chalk: #2f67a8;
+  --notch: #c23a2e;
+  --surface: #f0f1ec;
+  --line: #d8dad3;
+  --muted: #4d555b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #14201d;
+    --graphite: #e8ecea;
+    --chalk: #7fb0e6;
+    --notch: #ef7a6e;
+    --surface: #1b2a26;
+    --line: #2d423c;
+    --muted: #a9b6b1;
   }
 }
 
+@theme inline {
+  --color-mat: var(--mat);
+  --color-mat-grid: var(--mat-grid);
+  --color-paper: var(--paper);
+  --color-graphite: var(--graphite);
+  --color-chalk: var(--chalk);
+  --color-notch: var(--notch);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-schibsted), system-ui, sans-serif;
+  --font-serif: var(--font-literata), Georgia, serif;
+}
+
+html {
+  background: var(--paper);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--graphite);
+  font-family: var(--font-literata), Georgia, serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, button, nav, th {
+  font-family: var(--font-schibsted), system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--chalk);
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--chalk);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.prose-measure {
+  max-width: 72ch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--mat);
+  color: #fff;
+}
+.btn-ghost {
+  border-color: currentColor;
+  color: inherit;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.table-scroll table {
+  border-collapse: collapse;
+  min-width: 36rem;
+  width: 100%;
+}
+.table-scroll th,
+.table-scroll td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.hero-outline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: draw 2.4s ease-out 1 both;
+}
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-outline {
+    animation: none;
+  }
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
