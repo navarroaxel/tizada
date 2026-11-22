@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check-links": "tsx scripts/check-links.ts",
     "test:e2e": "playwright test",
     "test": "node --import tsx --test \"tests/unit/**/*.test.ts\""
